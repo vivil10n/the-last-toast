@@ -442,3 +442,17 @@ details p {
     min-width: 120px;
   }
 }
+
+.arena-embed-wrapper {
+  margin-top: 44px;
+  width: 100%;
+  overflow: hidden;
+  border: 2px solid var(--cream);
+  border-radius: 18px;
+  background: rgba(255, 240, 198, 0.04);
+}
+
+.arena-embed-wrapper iframe {
+  display: block;
+  width: 100%;
+}
