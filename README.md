@@ -2,7 +2,7 @@
 
 A digital invitation I designed and built for my 22nd birthday: a semi-formal murder mystery dinner party.
 
-The website brings together the event details, dress code, RSVP form, FAQ and birthday wishlist in one slightly suspicious place.
+The website brings together the event details, dress code, RSVP form, FAQ and birthday wishlist...
 
 ### [View the live website →](https://vivil10n.github.io/the-last-toast/)
 

@@ -1,7 +1,6 @@
-// Smooth little reveal animation
 const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
+  (entries) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
       }
@@ -10,33 +9,31 @@ const observer = new IntersectionObserver(
   { threshold: 0.15 }
 );
 
-document.querySelectorAll(".section, .hero").forEach(el => {
+document.querySelectorAll(".section, .hero").forEach((el) => {
   el.classList.add("reveal");
   observer.observe(el);
 });
 
-// Wishlist
 const wishlistGrid = document.getElementById("wishlist-grid");
-
-const ARENA_API_URL = "https://api.are.na/v3/channels/vivian-s-22nd-wishlist/contents";
+const arenaUrl =
+  "https://api.are.na/v3/channels/vivian-s-22nd-wishlist/contents";
 
 async function loadWishlist() {
   try {
-    const response = await fetch(ARENA_API_URL);
+    const response = await fetch(arenaUrl);
 
     if (!response.ok) {
-      throw new Error("wishlist could not be loaded");
+      throw new Error("Could not load wishlist");
     }
 
     const data = await response.json();
-
-    // are.na sometimes returns { contents: [...] }, sometimes just an array
     const items = data.contents || data || [];
 
     wishlistGrid.innerHTML = "";
 
     if (!items.length) {
-      wishlistGrid.innerHTML = "<p class='loading-text'>no wishlist items yet.</p>";
+      wishlistGrid.innerHTML =
+        "<p class='loading-text'>no wishlist items yet.</p>";
       return;
     }
 
@@ -46,7 +43,12 @@ async function loadWishlist() {
 
       const title = item.title || "wishlist item";
       const description = item.description || "";
-      const link = item.source?.url || item.image?.original?.url || item.href || "#";
+
+      const link =
+        item.source?.url ||
+        item.image?.original?.url ||
+        item.href ||
+        "#";
 
       const imageUrl =
         item.image?.display?.url ||
@@ -76,6 +78,7 @@ async function loadWishlist() {
         wishlist couldn’t load right now. please check back later :-)
       </p>
     `;
+
     console.error(error);
   }
 }
